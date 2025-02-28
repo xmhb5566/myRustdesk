@@ -163,15 +163,7 @@ void runMobileApp() async {
   if (isAndroid) platformFFI.syncAndroidServiceAppDirConfigPath();
   draggablePositions.load();
   await Future.wait([gFFI.abModel.loadCache(), gFFI.groupModel.loadCache()]);
-  gFFI.userModel.refreshCurrentUser();
-      setServerConfig(
-        null,
-        [],
-        ServerConfig(
-            idServer: "192.168.10.116:21116",
-            relayServer: '',
-            apiServer: '',
-            key: "8zSsiwLLbczWvBtWa7wJmySdPJQZOnT3HjcGJnGDBKU="));
+  gFFI.userModel.refreshCurrentUser(); 
   runApp(App());
   await initUniLinks();
 }
