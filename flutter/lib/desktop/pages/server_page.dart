@@ -43,15 +43,7 @@ class _DesktopServerPageState extends State<DesktopServerPage>
 
   @override
   void initState() {
-    windowManager.addListener(this);
-      setServerConfig(
-        null,
-        [],
-        ServerConfig(
-            idServer: "192.168.10.116:21116",
-            relayServer: '',
-            apiServer: '',
-            key: "8zSsiwLLbczWvBtWa7wJmySdPJQZOnT3HjcGJnGDBKU="));
+    windowManager.addListener(this); 
     super.initState();
   }
 
