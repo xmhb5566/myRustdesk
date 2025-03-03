@@ -297,7 +297,7 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                 Text(
                   "请允许【远程协助】显示在其他应用的上层",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black54,
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
                   ),
@@ -315,10 +315,11 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                               },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
+                          elevation: 0
                         ),
                         child: Text( translate("I Agree"),
                           style: TextStyle(
-                            color: Colors.black87,
+                            color: Colors.blueAccent,
                             fontWeight: FontWeight.bold,
                             fontSize: 13.0,
                           ),
@@ -335,7 +336,8 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                           Navigator.of(context).pop();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: Colors.white,
+                          elevation: 0
                         ),
                         child: Text(
                           translate("Decline"),
