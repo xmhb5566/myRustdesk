@@ -74,7 +74,7 @@ class _ConnectionPageState extends State<ConnectionPage> {
         }
       });
     }
-    Get.put<TextEditingController>(_idEditingController); 
+    Get.put<TextEditingController>(_idEditingController);
   }
 
   @override

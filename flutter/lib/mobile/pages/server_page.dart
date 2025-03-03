@@ -256,29 +256,16 @@ class ScamWarningDialog extends StatefulWidget {
 }
 
 class ScamWarningDialogState extends State<ScamWarningDialog> {
-  int _countdown = bind.isCustomClient() ? 0 : 12;
   bool show_warning = false;
-  late Timer _timer;
   late ServerModel _serverModel;
 
   @override
   void initState() {
     super.initState();
     _serverModel = widget.serverModel;
-    startCountdown();
   }
 
-  void startCountdown() {
-    const oneSecond = Duration(seconds: 1);
-    _timer = Timer.periodic(oneSecond, (timer) {
-      setState(() {
-        _countdown--;
-        if (_countdown <= 0) {
-          timer.cancel();
-        }
-      });
-    });
-  }
+
 
   @override
   void dispose() {
@@ -288,7 +275,6 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final isButtonLocked = _countdown > 0;
 
     return AlertDialog(
       content: ClipRRect(
@@ -300,8 +286,8 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-                  Color(0xffe242bc),
-                  Color(0xfff4727c),
+                  Color(0xff5678ea),
+                  Color(0xff7487c4),
                 ],
               ),
             ),
@@ -310,78 +296,31 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.warning_amber_sharp,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      translate("Warning"),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Center(
-                  child: Image.asset(
-                    'assets/scam.png',
-                    width: 180,
-                  ),
-                ),
-                SizedBox(height: 18),
                 Text(
-                  translate("scam_title"),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22.0,
-                  ),
-                ),
-                SizedBox(height: 18),
-                Text(
-                  "${translate("scam_text1")}\n\n${translate("scam_text2")}\n",
+                  "提示",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
                   ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                      value: show_warning,
-                      onChanged: (value) {
-                        setState(() {
-                          show_warning = value!;
-                        });
-                      },
-                    ),
-                    Text(
-                      translate("Don't show again"),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15.0,
-                      ),
-                    ),
-                  ],
+                SizedBox(height: 18),
+                Text(
+                  "请允许显示在其他应用的上层",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                  ),
                 ),
+                SizedBox(height: 18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
                       constraints: BoxConstraints(maxWidth: 150),
                       child: ElevatedButton(
-                        onPressed: isButtonLocked
-                            ? null
-                            : () {
+                        onPressed:  () {
                                 Navigator.of(context).pop();
                                 _serverModel.toggleService();
                                 if (show_warning) {
@@ -392,10 +331,7 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blueAccent,
                         ),
-                        child: Text(
-                          isButtonLocked
-                              ? "${translate("I Agree")} (${_countdown}s)"
-                              : translate("I Agree"),
+                        child: Text( translate("I Agree"),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 13.0,
