@@ -256,7 +256,6 @@ class ScamWarningDialog extends StatefulWidget {
 }
 
 class ScamWarningDialogState extends State<ScamWarningDialog> {
-  bool show_warning = false;
   late ServerModel _serverModel;
 
   @override
@@ -280,32 +279,23 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
         borderRadius: BorderRadius.circular(20.0),
         child: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                  Color(0xff5678ea),
-                  Color(0xff7487c4),
-                ],
-              ),
-            ),
+            color: Colors.white,
             padding: EdgeInsets.all(25.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "提示",
+                  "温馨提示",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black87,
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
                   ),
                 ),
                 SizedBox(height: 18),
                 Text(
-                  "请允许显示在其他应用的上层",
+                  "请允许【远程协助】显示在其他应用的上层",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -322,16 +312,13 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                         onPressed:  () {
                                 Navigator.of(context).pop();
                                 _serverModel.toggleService();
-                                if (show_warning) {
-                                  bind.mainSetLocalOption(
-                                      key: "show-scam-warning", value: "N");
-                                }
                               },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: Colors.white,
                         ),
                         child: Text( translate("I Agree"),
                           style: TextStyle(
+                            color: Colors.black87,
                             fontWeight: FontWeight.bold,
                             fontSize: 13.0,
                           ),
@@ -353,6 +340,7 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                         child: Text(
                           translate("Decline"),
                           style: TextStyle(
+                            color: Colors.black54,
                             fontWeight: FontWeight.bold,
                             fontSize: 13.0,
                           ),
