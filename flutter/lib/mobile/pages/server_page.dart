@@ -269,7 +269,6 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
 
   @override
   void dispose() {
-    _timer.cancel();
     super.dispose();
   }
 
