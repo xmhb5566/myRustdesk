@@ -74,15 +74,7 @@ class _ConnectionPageState extends State<ConnectionPage> {
         }
       });
     }
-    Get.put<TextEditingController>(_idEditingController);
-    setServerConfig(
-      null,
-      [],
-      ServerConfig(
-          idServer: "192.168.10.116:21116",
-          relayServer: '',
-          apiServer: '',
-          key: "8zSsiwLLbczWvBtWa7wJmySdPJQZOnT3HjcGJnGDBKU="));
+    Get.put<TextEditingController>(_idEditingController); 
   }
 
   @override
