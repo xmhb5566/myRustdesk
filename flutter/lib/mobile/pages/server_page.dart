@@ -276,11 +276,11 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
 
     return AlertDialog(
       content: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(12.0),
         child: SingleChildScrollView(
           child: Container(
             color: Colors.white,
-            padding: EdgeInsets.all(25.0),
+            padding: EdgeInsets.all(20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -297,7 +297,7 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                 Text(
                   "请允许【远程协助】显示在其他应用的上层",
                   style: TextStyle(
-                    color: Colors.black54,
+                    color: Colors.black87,
                     fontWeight: FontWeight.bold,
                     fontSize: 16.0,
                   ),
@@ -321,10 +321,8 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                           style: TextStyle(
                             color: Colors.blueAccent,
                             fontWeight: FontWeight.bold,
-                            fontSize: 13.0,
+                            fontSize: 16.0,
                           ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),
@@ -342,12 +340,10 @@ class ScamWarningDialogState extends State<ScamWarningDialog> {
                         child: Text(
                           translate("Decline"),
                           style: TextStyle(
-                            color: Colors.black54,
+                            color: Colors.blueAccent,
                             fontWeight: FontWeight.bold,
-                            fontSize: 13.0,
+                            fontSize: 16.0,
                           ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),
